@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Paediatric Emergency Tools</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header>
+    <h1>Paediatric Emergency Tools</h1>
+    <nav>
+      <a href="#calculators">Calculators</a>
+      <a href="#meds">Emergency Meds</a>
+      <a href="#algorithms">Algorithms</a>
+      <a href="#critical">Critical Cases</a>
+      <a href="#about">About</a>
+    </nav>
+  </header>
+
+  <section id="calculators">
+    <h2>🧮 Drug Dose Calculator</h2>
+    <form id="dose-form">
+      <label for="weight">Patient Weight (kg):</label>
+      <input type="number" id="weight" required>
+      <label for="drug">Select Drug:</label>
+      <select id="drug">
+        <option value="paracetamol">Paracetamol (15 mg/kg)</option>
+        <option value="ibuprofen">Ibuprofen (10 mg/kg)</option>
+        <option value="ceftriaxone">Ceftriaxone (50 mg/kg)</option>
+        <option value="diazepam">Diazepam (0.3 mg/kg)</option>
+        <option value="adrenaline">Adrenaline (0.01 mg/kg)</option>
+      </select>
+      <button type="submit">Calculate</button>
+    </form>
+    <div id="result"></div>
+  </section>
+
+  <section id="meds">
+    <h2>💊 Emergency Medications</h2>
+    <div id="med-list"></div>
+  </section>
+
+  
+<section id="algorithms">
+  <h2>📋 Algorithms</h2>
+  <div class="card">
+    <h3>Status Epilepticus Algorithm 🔄</h3>
+    <ol>
+      <li><strong>0–5 min:</strong> ABCs, O2, IV/IO access, check glucose.</li>
+      <li><strong>5–10 min:</strong> Benzodiazepine:<br>
+          • Diazepam 0.3 mg/kg IV (max 10 mg) OR<br>
+          • Midazolam 0.2 mg/kg IM/intranasal</li>
+      <li><strong>10–20 min:</strong> Repeat benzodiazepine if seizures persist.</li>
+      <li><strong>20–40 min:</strong> Load with:<br>
+          • Levetiracetam 40 mg/kg IV (max 3 g) OR<br>
+          • Phenytoin/Fosphenytoin 20 mg PE/kg IV</li>
+      <li><strong>40–60 min:</strong> If seizure continues, prepare for intubation + continuous infusion (Midazolam, Propofol).</li>
+      <li><em>Call ICU / Neurology.</em></li>
+    </ol>
+    <p dir="rtl"><strong>ملاحظات:</strong> تحقق من نسبة السكر، استبعد نقص الكالسيوم، وحافظ على الأكسجة.</p>
+  </div>
+</section>
+
+
+  <section id="critical">
+    <h2>🧯 Critical Cases</h2>
+    <p>🚧 Coming Soon: Shock, Status Epilepticus, Severe Asthma...</p>
+  </section>
+
+  
+<section id="fluids">
+  <h2>💧 Fluid Calculator</h2>
+  <form id="fluid-form">
+    <label for="fluid-weight">Patient Weight (kg):</label>
+    <input type="number" id="fluid-weight" required>
+    <button type="submit">Calculate Fluids</button>
+  </form>
+  <div id="fluid-result"></div>
+</section>
+
+<section id="about" dir="rtl">
+    <h2>حول التطبيق</h2>
+    <p><strong>تم بواسطة:</strong><br>
+    د. عبدالوهاب عبد المنان الشيخ<br>
+    طبيب طوارئ أطفال – طموح طبيب أسرة<br><br>
+    <strong>مطور تطبيق Paediatric Emergency Tools</strong><br><br>
+    <strong>المراجع العلمية:</strong><br>
+    UpToDate<br>
+    BMJ<br>
+    AMBOSS<br>
+    Saudi Guidelines<br>
+    Medscape</p>
+  </section>
+</body>
+</html>

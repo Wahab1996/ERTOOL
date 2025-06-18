@@ -1,0 +1,34 @@
+{
+  "drugs": [
+    {
+      "name": "Paracetamol",
+      "concentration": "120 mg/5 ml",
+      "dosePerKg": 15,
+      "warning": "Do not exceed 60 mg/kg/day"
+    },
+    {
+      "name": "Ibuprofen",
+      "concentration": "100 mg/5 ml",
+      "dosePerKg": 10,
+      "warning": "Avoid in infants under 6 months"
+    },
+    {
+      "name": "Ceftriaxone",
+      "concentration": "1 g/vial (IV)",
+      "dosePerKg": 50,
+      "warning": "Do not use in neonates with hyperbilirubinemia"
+    },
+    {
+      "name": "Diazepam",
+      "concentration": "5 mg/ml (IV/rectal)",
+      "dosePerKg": 0.3,
+      "warning": "Administer slowly IV; monitor respiration"
+    },
+    {
+      "name": "Adrenaline",
+      "concentration": "1:1000 (1 mg/ml)",
+      "dosePerKg": 0.01,
+      "warning": "Use IM for anaphylaxis"
+    }
+  ]
+}
