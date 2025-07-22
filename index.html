@@ -1,96 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar">
 <head>
   <meta charset="UTF-8">
-  <title>Paediatric Emergency Tools</title>
+  <meta name="viewport" content="width=device-width, initial-scale=0.85, maximum-scale=1.0, user-scalable=no">
+  <title>مدير المصروفات</title>
   <link rel="stylesheet" href="style.css">
-  <script src="script.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-  <header>
-    <h1>Paediatric Emergency Tools</h1>
-    <nav>
-      <a href="#calculators">Calculators</a>
-      <a href="#meds">Emergency Meds</a>
-      <a href="#algorithms">Algorithms</a>
-      <a href="#critical">Critical Cases</a>
-      <a href="#about">About</a>
-    </nav>
-  </header>
+  <div class="container">
+    <h1>تسجيل المصاريف</h1>
 
-  <section id="calculators">
-    <h2>🧮 Drug Dose Calculator</h2>
-    <form id="dose-form">
-      <label for="weight">Patient Weight (kg):</label>
-      <input type="number" id="weight" required>
-      <label for="drug">Select Drug:</label>
-      <select id="drug">
-        <option value="paracetamol">Paracetamol (15 mg/kg)</option>
-        <option value="ibuprofen">Ibuprofen (10 mg/kg)</option>
-        <option value="ceftriaxone">Ceftriaxone (50 mg/kg)</option>
-        <option value="diazepam">Diazepam (0.3 mg/kg)</option>
-        <option value="adrenaline">Adrenaline (0.01 mg/kg)</option>
-      </select>
-      <button type="submit">Calculate</button>
+    <form id="expenseForm">
+      <input type="number" id="amount" placeholder="المبلغ" required>
+      <input type="text" id="note" placeholder="الملاحظة" required>
+      <button type="submit">إضافة</button>
     </form>
-    <div id="result"></div>
-  </section>
 
-  <section id="meds">
-    <h2>💊 Emergency Medications</h2>
-    <div id="med-list"></div>
-  </section>
+    <!-- ✅ إجمالي المصروفات لهذا الشهر -->
+    <div id="monthlyTotal" style="margin-top: 15px; font-weight: bold;">📅 إجمالي المصروفات لهذا الشهر: 0 ريال</div>
 
-  
-<section id="algorithms">
-  <h2>📋 Algorithms</h2>
-  <div class="card">
-    <h3>Status Epilepticus Algorithm 🔄</h3>
-    <ol>
-      <li><strong>0–5 min:</strong> ABCs, O2, IV/IO access, check glucose.</li>
-      <li><strong>5–10 min:</strong> Benzodiazepine:<br>
-          • Diazepam 0.3 mg/kg IV (max 10 mg) OR<br>
-          • Midazolam 0.2 mg/kg IM/intranasal</li>
-      <li><strong>10–20 min:</strong> Repeat benzodiazepine if seizures persist.</li>
-      <li><strong>20–40 min:</strong> Load with:<br>
-          • Levetiracetam 40 mg/kg IV (max 3 g) OR<br>
-          • Phenytoin/Fosphenytoin 20 mg PE/kg IV</li>
-      <li><strong>40–60 min:</strong> If seizure continues, prepare for intubation + continuous infusion (Midazolam, Propofol).</li>
-      <li><em>Call ICU / Neurology.</em></li>
-    </ol>
-    <p dir="rtl"><strong>ملاحظات:</strong> تحقق من نسبة السكر، استبعد نقص الكالسيوم، وحافظ على الأكسجين.</p>
+    <!-- ✅ الجزء الذي سيتم طباعته فقط -->
+    <div class="print-section">
+      
+      <!-- 📋 جدول المصروفات -->
+      <table id="expensesTable">
+        <thead>
+          <tr>
+            <th>التاريخ</th>
+            <th>المبلغ</th>
+            <th>الملاحظة</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+
+      <!-- ✅ إجمالي مصروفات اليوم -->
+      <div id="dailyTotal" style="margin-top: 10px; font-weight: bold; text-align: center;"></div>
+
+      <!-- 🎯 الرسم البياني -->
+      <canvas id="expensesChart" width="400" height="200" style="margin-top: 15px;"></canvas>
+
+      <!-- ✅ إجمالي المصروفات الكلي -->
+      <div id="totalAllTime" style="margin-top: 10px; font-weight: bold; text-align: center;"></div>
+
+      <!-- ✅ نفس إجمالي الشهر يظهر أيضاً في الطباعة -->
+      <div id="monthlyTotalPrint" style="margin-top: 10px; font-weight: bold; text-align: center;"></div>
+    </div>
+
+    <!-- ✅ أزرار التحكم -->
+    <div style="margin-top: 20px;">
+      <button onclick="printExpenses()">🖨️ طباعة التقرير</button>
+      <button onclick="resetExpenses()">🧹 تصفير البيانات</button>
+    </div>
   </div>
-</section>
 
-
-  <section id="critical">
-    <h2>🧯 Critical Cases</h2>
-    <p>🚧 Coming Soon: Shock, Status Epilepticus, Severe Asthma...</p>
-  </section>
-
-  
-<section id="fluids">
-  <h2>💧 Fluid Calculator</h2>
-  <form id="fluid-form">
-    <label for="fluid-weight">Patient Weight (kg):</label>
-    <input type="number" id="fluid-weight" required>
-    <button type="submit">Calculate Fluids</button>
-  </form>
-  <div id="fluid-result"></div>
-</section>
-
-<section id="about" dir="rtl">
-    <h2>حول التطبيق</h2>
-    <p><strong>تم بواسطة:</strong><br>
-    د. عبدالوهاب عبد المنان الشيخ<br>
-    طبيب طوارئ أطفال – طموح طبيب أسرة<br><br>
-    <strong>مطور تطبيق Paediatric Emergency Tools</strong><br><br>
-    <strong>المراجع العلمية:</strong><br>
-    UpToDate<br>
-    BMJ<br>
-    AMBOSS<br>
-    Saudi Guidelines<br>
-    Medscape</p>
-  </section>
+  <script src="script.js"></script>
 </body>
 </html>
