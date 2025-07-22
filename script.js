@@ -91,8 +91,10 @@ function printExpenses() {
 }
 
 function resetExpenses() {
-  localStorage.removeItem('expenses');
-  location.reload();
+      if (confirm("هل أنت متأكد من تصفير جميع البيانات؟")) {
+        expenses = [];
+        saveExpenses();
+        renderExpenses();
 }
 
 let chart;
