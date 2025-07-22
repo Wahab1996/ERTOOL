@@ -6,6 +6,13 @@
   <title>مدير المصروفات</title>
   <link rel="stylesheet" href="style.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    @media print {
+      .no-print {
+        display: none !important;
+      }
+    }
+  </style>
 </head>
 <body>
   <div class="container">
@@ -16,9 +23,6 @@
       <input type="text" id="note" placeholder="الملاحظة" required>
       <button type="submit">إضافة</button>
     </form>
-
-    <!-- ✅ إجمالي المصروفات لهذا الشهر -->
-    <div id="monthlyTotal" style="margin-top: 15px; font-weight: bold;">📅 إجمالي المصروفات لهذا الشهر: 0 ريال</div>
 
     <!-- ✅ الجزء الذي سيتم طباعته فقط -->
     <div class="print-section">
@@ -35,17 +39,14 @@
         <tbody></tbody>
       </table>
 
-      <!-- ✅ إجمالي مصروفات اليوم -->
-      <div id="dailyTotal" style="margin-top: 10px; font-weight: bold; text-align: center;"></div>
+      <!-- ✅ إجمالي مصروفات اليوم (يظهر فقط في الصفحة وليس في الطباعة) -->
+      <div id="dailyTotal" class="no-print" style="margin-top: 10px; font-weight: bold; text-align: center;"></div>
 
       <!-- 🎯 الرسم البياني -->
       <canvas id="expensesChart" width="400" height="200" style="margin-top: 15px;"></canvas>
 
       <!-- ✅ إجمالي المصروفات الكلي -->
       <div id="totalAllTime" style="margin-top: 10px; font-weight: bold; text-align: center;"></div>
-
-      <!-- ✅ نفس إجمالي الشهر يظهر أيضاً في الطباعة -->
-      <div id="monthlyTotalPrint" style="margin-top: 10px; font-weight: bold; text-align: center;"></div>
     </div>
 
     <!-- ✅ أزرار التحكم -->
