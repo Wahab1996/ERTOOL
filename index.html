@@ -50,10 +50,9 @@
     </div>
 
     <!-- ✅ أزرار التحكم -->
-    <div style="margin-top: 20px;">
-      <button onclick="printExpenses()"> طباعة التقرير</button>
-      <button onclick="resetExpenses()"> تصفير البيانات</button>
-    </div>
+    <div class="button-group" style="text-align: center;">
+    <button onclick="window.print()">🖨️ طباعة</button>
+    <button onclick="resetExpenses()" style="background-color:#e74c3c;">🗑️ تصفير البيانات</button>
   </div>
 
   <script src="script.js"></script>
