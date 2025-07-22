@@ -24,24 +24,6 @@ function addExpenseToTable({ datetime, amount, note }) {
   row.innerHTML = `<td>${datetime}</td><td>${amount.toFixed(2)}</td><td>${note}</td>`;
 }
 
-function updateMonthlyTotal(expenses) {
-  const now = new Date();
-  const currentMonth = now.getMonth();
-  const currentYear = now.getFullYear();
-
-  const total = expenses.reduce((sum, exp) => {
-    const expDate = new Date(exp.timestamp);
-    if (expDate.getMonth() === currentMonth && expDate.getFullYear() === currentYear) {
-      return sum + exp.amount;
-    }
-    return sum;
-  }, 0);
-
-  const totalText = `📅 إجمالي المصروفات لهذا الشهر: ${total.toFixed(2)} ريال`;
-  document.getElementById('monthlyTotal').textContent = totalText;
-  document.getElementById('monthlyTotalPrint').textContent = totalText;
-}
-
 function updateDailyTotal(expenses) {
   const today = new Date().toISOString().slice(0, 10); // YYYY-MM-DD
   const totalToday = expenses.reduce((sum, exp) => {
@@ -77,7 +59,6 @@ form.onsubmit = function (e) {
   saveExpenses(expenses);
   addExpenseToTable(expense);
   updateChart(expenses);
-  updateMonthlyTotal(expenses);
   updateDailyTotal(expenses);
   updateAllTimeTotal(expenses);
 
@@ -88,7 +69,6 @@ window.onload = function () {
   const expenses = getExpenses();
   expenses.forEach(addExpenseToTable);
   updateChart(expenses);
-  updateMonthlyTotal(expenses);
   updateDailyTotal(expenses);
   updateAllTimeTotal(expenses);
 };
