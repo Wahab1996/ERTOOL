@@ -91,8 +91,11 @@ function printExpenses() {
 }
 
 function resetExpenses() {
-  localStorage.removeItem('expenses');
-  location.reload();
+  const confirmReset = confirm("هل أنت متأكد من تصفير جميع البيانات؟");
+  if (confirmReset) {
+    localStorage.removeItem('expenses');
+    location.reload();
+  }
 }
 
 let chart;
