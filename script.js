@@ -90,14 +90,9 @@ function printExpenses() {
   document.head.removeChild(style);
 }
 
-function resetExpenses () {
-  localStorage. removeItem( 'expenses');
-  location.reload ();
 function resetExpenses() {
-      if (confirm("هل أنت متأكد من تصفير جميع البيانات؟")) {
-        expenses = [];
-        saveExpenses();
-        renderExpenses();
+  localStorage.removeItem('expenses');
+  location.reload();
 }
 
 let chart;
